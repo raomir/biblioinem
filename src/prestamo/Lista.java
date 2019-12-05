@@ -8,6 +8,7 @@ package prestamo;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
+import reportes.Reporte;
 
 /**
  *
@@ -50,6 +51,7 @@ public class Lista extends javax.swing.JPanel {
         btnNuevoPrestamo = new rojeru_san.RSButtonRiple();
         btnDevolverPrestamo = new rojeru_san.RSButtonRiple();
         txtBuscar = new rojeru_san.RSMTextFull();
+        btnNuevoPrestamo1 = new rojeru_san.RSButtonRiple();
 
         setPreferredSize(new java.awt.Dimension(620, 440));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -84,7 +86,7 @@ public class Lista extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tablaPrestamos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tablaPrestamos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(tablaPrestamos);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 1050, 380));
@@ -124,6 +126,17 @@ public class Lista extends javax.swing.JPanel {
         });
         jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 90, -1, -1));
 
+        btnNuevoPrestamo1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 112, 192)));
+        btnNuevoPrestamo1.setText("Reporte");
+        btnNuevoPrestamo1.setColorHover(new java.awt.Color(255, 255, 255));
+        btnNuevoPrestamo1.setColorTextHover(new java.awt.Color(0, 112, 192));
+        btnNuevoPrestamo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoPrestamo1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnNuevoPrestamo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 140, -1));
+
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 550));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -134,8 +147,8 @@ public class Lista extends javax.swing.JPanel {
     public void devolver(){
         if (tablaPrestamos.getRowCount() > 0) {
             if (tablaPrestamos.getSelectedRowCount() > 0) {
-                if (JOptionPane.showConfirmDialog(this, "Esta a punto de eliminar\nun registro.\n¿Desea continuar?", "Registro Ventas", JOptionPane.YES_NO_OPTION, 0,
-                        new ImageIcon(getClass().getResource(""))) == JOptionPane.YES_OPTION) {
+                if (JOptionPane.showConfirmDialog(this, "Esta a punto de devolver un libro.\n¿Desea continuar?", "Devolución de Prestamo", JOptionPane.YES_NO_OPTION, 0,
+                    new ImageIcon(getClass().getResource(""))) == JOptionPane.YES_OPTION) {
                     int fila = tablaPrestamos.getSelectedRow();
                     s.setIdPrestamo(tablaPrestamos.getValueAt(fila, 0).toString());
                     s.setNombres(tablaPrestamos.getValueAt(fila, 4).toString());
@@ -143,13 +156,13 @@ public class Lista extends javax.swing.JPanel {
                     int elimina = op.devolverPrestamo();
                     if (elimina != 0) {
                         limpiaCampos();
-                        JOptionPane.showMessageDialog(this, "Registro devuelto.", "Registro Ventas", 0,
+                        JOptionPane.showMessageDialog(this, "Registro devuelto.", "Devolución de Prestamo", 0,
                                   new ImageIcon(getClass().getResource("")));
                         
                     }
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Seleccione un registro.", "Registro Ventas", 0,
+                JOptionPane.showMessageDialog(this, "Seleccione un registro.", "Devolución de Prestamo", 0,
                         new ImageIcon(getClass().getResource("")));
             }
 
@@ -171,10 +184,16 @@ public class Lista extends javax.swing.JPanel {
         op.listarPersonal(txtBuscar.getText());
     }//GEN-LAST:event_txtBuscarKeyReleased
 
+    private void btnNuevoPrestamo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoPrestamo1ActionPerformed
+        Reporte reporte = new Reporte();
+        reporte.mostrarReporte();
+    }//GEN-LAST:event_btnNuevoPrestamo1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rojeru_san.RSButtonRiple btnDevolverPrestamo;
     private rojeru_san.RSButtonRiple btnNuevoPrestamo;
+    private rojeru_san.RSButtonRiple btnNuevoPrestamo1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

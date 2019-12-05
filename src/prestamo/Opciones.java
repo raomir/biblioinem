@@ -53,7 +53,9 @@ public class Opciones {
         if (busca.equals("")) {
             sql = s.listar;
         } else {
-            sql = "SELECT * FROM prestamo, estudiante, libro WHERE nombres like'" + busca + "%' or apellidos like'" + busca + "%' or documento ='" + busca + "' ORDER BY estado = 1";
+            sql = "SELECT * FROM prestamo, estudiante, libro WHERE nombres like'" + busca + "%' or apellidos like'" + busca + "%' "
+                    + "or documento ='" + busca + "' or titulo like'" + busca + "' "
+                    + "or fechaSolicitud= '" + busca + "' GROUP BY idPrestamo ORDER BY estado = 1 ASC";
 
         }
          String datos[] = new String[8];    

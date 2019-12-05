@@ -3,7 +3,6 @@ package prestamo;
 import Alertas.ErrorRegistro;
 import Alertas.Registro;
 import Alertas.RellenarCampos;
-import com.sun.awt.AWTUtilities;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;

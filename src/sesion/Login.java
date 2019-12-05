@@ -5,7 +5,6 @@
  */
 package sesion;
 
-import com.sun.awt.AWTUtilities;
 
 /**
  *
@@ -19,7 +18,6 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         
-        AWTUtilities.setWindowOpaque(this, false);
         this.setLocationRelativeTo(this);
     }
 

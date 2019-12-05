@@ -24,7 +24,7 @@ public class Sentencias{
 
     String listar = "SELECT * FROM prestamo, estudiante, libro"
             + " WHERE libro = idLibro "
-            + "AND estudiante = idEstudiante ORDER BY estado = 1";
+            + "AND estudiante = idEstudiante ORDER BY idPrestamo DESC";
     
     String seleccionarEstudiante = "SELECT nombres FROM estudiante WHERE documento = ?";
     
